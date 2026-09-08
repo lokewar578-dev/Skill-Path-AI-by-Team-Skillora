@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;1,500;1,600&family=Noto+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', 'Noto Sans', sans-serif;
+  --font-math: 'Lora', 'Cambria Math', 'Georgia', serif;
+
+  /* MoSPI Palette - Light Mode */
+  --bg-main: #f0f4f9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #ffffff;
+  --bg-sidebar: #0b192c;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-light: #64748b;
+
+  --navy-primary: #0f2c59;
+  --navy-dark: #071938;
+  --navy-accent: #1d4ed8;
+
+  --saffron-main: #ea580c;
+  --saffron-light: #fff7ed;
+  --saffron-glow: rgba(234, 88, 12, 0.15);
+
+  --emerald-main: #059669;
+  --emerald-light: #ecfdf5;
+
+  --border-color: #cbd5e1;
+  --border-focus: #2563eb;
+
+  --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 6px 18px rgba(15, 44, 89, 0.08);
+  --shadow-lg: 0 16px 36px rgba(15, 44, 89, 0.14);
+
+  --glass-bg: rgba(255, 255, 255, 0.92);
+  --glass-border: rgba(203, 213, 225, 0.8);
+}
+
+[data-theme='dark'] {
+  --bg-main: #060b14;
+  --bg-card: #0f172a;
+  --bg-card-hover: #1e293b;
+  --bg-sidebar: #020617;
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --text-light: #94a3b8;
+
+  --navy-primary: #3b82f6;
+  --navy-dark: #1e3a8a;
+  --navy-accent: #60a5fa;
+
+  --saffron-main: #f97316;
+  --saffron-light: rgba(249, 115, 22, 0.15);
+
+  --emerald-main: #10b981;
+  --emerald-light: rgba(16, 185, 129, 0.15);
+
+  --border-color: #1e293b;
+  --border-focus: #60a5fa;
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.6);
+
+  --glass-bg: rgba(15, 23, 42, 0.92);
+  --glass-border: rgba(30, 41, 59, 0.8);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-light);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Glass Card Utility */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Badge Styles */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badge-saffron {
+  background: var(--saffron-light);
+  color: var(--saffron-main);
+  border: 1px solid rgba(234, 88, 12, 0.25);
+}
+
+.badge-emerald {
+  background: var(--emerald-light);
+  color: var(--emerald-main);
+  border: 1px solid rgba(5, 150, 105, 0.25);
+}
+
+.badge-navy {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--navy-primary);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.badge-muted {
+  background: rgba(148, 163, 184, 0.1);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, #0f2c59 0%, #1d4ed8 100%);
+  color: #ffffff;
+  border: none;
+  padding: 11px 22px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(15, 44, 89, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(15, 44, 89, 0.35);
+}
+
+.btn-saffron {
+  background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+  color: #ffffff;
+  border: none;
+  padding: 11px 22px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-saffron:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(234, 88, 12, 0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  border-color: var(--navy-primary);
+  color: var(--navy-primary);
+  background: rgba(59, 130, 246, 0.06);
+}
+
+/* ========================================================
+   MATHEMATICAL TYPOGRAPHY & FORMULA STYLING (TEXTBOOK QUALITY)
+   ======================================================== */
+
+.math-formatted-container {
+  font-family: var(--font-body);
+}
+
+/* Subscript styling: M_hi -> M_hi */
+.math-var-group {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.math-var-base {
+  font-family: var(--font-math);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.05em;
+  color: var(--navy-primary);
+  padding: 0 1px;
+}
+
+.math-var-sub {
+  font-family: var(--font-math);
+  font-style: italic;
+  font-size: 0.78em;
+  font-weight: 700;
+  color: var(--saffron-main);
+  position: relative;
+  bottom: -0.22em;
+  margin-left: 1px;
+}
+
+.math-var-single {
+  font-family: var(--font-math);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.05em;
+  color: var(--navy-primary);
+  padding: 0 2px;
+}
+
+/* Fraction Box styling: (1 / n_h) or (Z_h / z_hi) */
+.math-fraction-box {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  padding: 0 6px;
+  font-family: var(--font-math);
+}
+
+.math-frac-num {
+  font-size: 0.88em;
+  font-weight: 600;
+  padding: 0 4px;
+  line-height: 1.1;
+  color: var(--navy-primary);
+}
+
+.math-frac-line {
+  width: 100%;
+  height: 1.8px;
+  background-color: var(--navy-primary);
+  margin: 2px 0;
+  border-radius: 1px;
+}
+
+.math-frac-den {
+  font-size: 0.88em;
+  font-weight: 600;
+  padding: 0 4px;
+  line-height: 1.1;
+  color: var(--navy-primary);
+}
+
+/* Creative Option Card Animations & Glows */
+.quiz-option-card {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.quiz-option-card:hover {
+  transform: translateX(4px);
+  border-color: var(--navy-primary) !important;
+  box-shadow: 0 4px 16px rgba(15, 44, 89, 0.1);
+}
+
+.quiz-option-card.correct-card {
+  background: linear-gradient(135deg, rgba(236, 253, 245, 0.95) 0%, rgba(209, 250, 229, 0.95) 100%) !important;
+  border: 2px solid #059669 !important;
+  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.2) !important;
+}
+
+.quiz-option-card.incorrect-card {
+  background: linear-gradient(135deg, rgba(254, 242, 242, 0.95) 0%, rgba(254, 226, 226, 0.95) 100%) !important;
+  border: 2px solid #dc2626 !important;
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.2) !important;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.pulse-glow {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+/* ========================================================
+   RESPONSIVE DESIGN (Mobile & Tablet)
+   ======================================================== */
+
+@media (max-width: 768px) {
+  /* Typography Scaling */
+  h1 { font-size: 1.8rem !important; }
+  h2 { font-size: 1.5rem !important; }
+  h3 { font-size: 1.2rem !important; }
+  
+  /* Utilities */
+  .hide-on-mobile {
+    display: none !important;
+  }
+  
+  .responsive-padding {
+    padding: 16px !important;
+  }
+  
+  .responsive-flex-column {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  
+  /* Layout Specifics */
+  .dashboard-header-flex {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+  
+  .dashboard-actions-flex {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+  
+  .nav-tabs-container {
+    padding: 0 12px !important;
+  }
+  
+  .intro-card {
+    padding: 24px 20px !important;
+    margin: 16px !important;
+  }
+  
+  .login-card {
+    padding: 24px 20px !important;
+    width: 95% !important;
+  }
+  
+  /* Increase touch targets for accessibility */
+  input, button, .btn-primary, .btn-saffron, .btn-outline {
+    min-height: 44px;
+  }
+}
