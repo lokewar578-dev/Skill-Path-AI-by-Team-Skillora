@@ -14,7 +14,7 @@
     "dagre": "^0.8.5",
     "lucide-react": "^1.41.0",
     "mammoth": "^1.12.2",
-    "pdfjs-dist": "^3.11.174",
+    "pdfjs-dist": "^4.2.67",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.3"
